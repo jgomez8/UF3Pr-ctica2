@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="UF3Pràctica2">
+  <ClassDiagramComponents>
+    <Class name="LlibreCopia" package="" visibility="public" xPosition="682.0" yPosition="56.0">
+      <Fields>
+        <Field name="id" type="String" visibility="private"/>
+        <Field name="estat" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="id"/>
+          <Argument type="String" name="estat"/>
+          <Argument type="String" name="nom"/>
+          <Argument type="String" name="tipus"/>
+          <Argument type="String" name="editorial"/>
+          <Argument type="int" name="any"/>
+          <Argument type="String" name="autor"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getId" returnType="String" visibility="public"/>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="String" name="id"/>
+        </Method>
+        <Method name="getEstat" returnType="String" visibility="public"/>
+        <Method name="setEstat" returnType="void" visibility="public">
+          <Argument type="String" name="estat"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Lector" package="" visibility="public" xPosition="803.0" yPosition="486.0">
+      <Fields>
+        <Field name="llibresAdquirits" type="List&lt;LlibreCopia&gt;" visibility="private"/>
+        <Field name="MAXIM_LLIBRES" type="int" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="List&lt;LlibreCopia&gt;" name="llibresAdquirits"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getLlibresAdquirits" returnType="List&lt;LlibreCopia&gt;" visibility="public"/>
+        <Method name="getMAXIM_LLIBRES" returnType="int" visibility="public"/>
+        <Method name="setLlibresAdquirits" returnType="LlibreCopia" visibility="public">
+          <Argument type="LlibreCopia" name="llibre"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Autor" package="" visibility="public" xPosition="127.0" yPosition="464.0">
+      <Fields>
+        <Field name="nom" type="String" visibility="private"/>
+        <Field name="nacionalitat" type="String" visibility="private"/>
+        <Field name="data_naixement" type="String" visibility="private"/>
+        <Field name="llibreEscrits" type="List&lt;Llibre&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nom"/>
+          <Argument type="String" name="nacionalitat"/>
+          <Argument type="String" name="data_naixement"/>
+          <Argument type="List&lt;Llibre&gt;" name="llibreEscrits"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNom" returnType="String" visibility="public"/>
+        <Method name="setNom" returnType="String" visibility="public">
+          <Argument type="String" name="nom"/>
+        </Method>
+        <Method name="getNacionalitat" returnType="String" visibility="public"/>
+        <Method name="setNacionalitat" returnType="String" visibility="public">
+          <Argument type="String" name="nacionalitat"/>
+        </Method>
+        <Method name="getData_naixement" returnType="String" visibility="public"/>
+        <Method name="setData_naixement" returnType="String" visibility="public">
+          <Argument type="String" name="data_naixement"/>
+        </Method>
+        <Method name="getLlibreEscrits" returnType="List&lt;Llibre&gt;" visibility="public"/>
+        <Method name="setLlibreEscrits" returnType="List&lt;Llibre&gt;" visibility="public">
+          <Argument type="List&lt;Llibre&gt;" name="llibreEscrits"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Llibre" package="" visibility="public" isAbstract="true" xPosition="180.0" yPosition="11.0">
+      <Fields>
+        <Field name="nom" type="String" visibility="private"/>
+        <Field name="tipus" type="String" visibility="private"/>
+        <Field name="editorial" type="String" visibility="private"/>
+        <Field name="any" type="int" visibility="private"/>
+        <Field name="autor" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nom"/>
+          <Argument type="String" name="tipus"/>
+          <Argument type="String" name="editorial"/>
+          <Argument type="int" name="any"/>
+          <Argument type="String" name="autor"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNom" returnType="String" visibility="public"/>
+        <Method name="setNom" returnType="void" visibility="public">
+          <Argument type="String" name="nom"/>
+        </Method>
+        <Method name="getTipus" returnType="String" visibility="public"/>
+        <Method name="setTipus" returnType="void" visibility="public">
+          <Argument type="String" name="tipus"/>
+        </Method>
+        <Method name="getEditorial" returnType="String" visibility="public"/>
+        <Method name="setEditorial" returnType="void" visibility="public">
+          <Argument type="String" name="editorial"/>
+        </Method>
+        <Method name="getAny" returnType="int" visibility="public"/>
+        <Method name="setAny" returnType="void" visibility="public">
+          <Argument type="int" name="any"/>
+        </Method>
+        <Method name="getAutor" returnType="String" visibility="public"/>
+        <Method name="setAutor" returnType="void" visibility="public">
+          <Argument type="String" name="autor"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="LlibreCopia" target="Llibre"/>
+    <HasRelation name="Escriu" source="Autor" target="Llibre" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="tePrestat" source="Lector" target="LlibreCopia" type="Aggregation" sourceCardinality="0..1" targetCardinality="0..*" collectionType="ArrayList"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
